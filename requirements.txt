@@ -1,0 +1,10 @@
+pandas>=1.5.2
+numpy>=1.24.1
+seaborn>=0.12.2
+seaborn>=0.12.2
+pickle
+xgboost>=1.7.3
+Flask>=2.2.2
+sklearn
+scipy>=1.10.0
+feature-engine>=1.5.2
