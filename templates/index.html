@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ML Model | Loan Approval</title>
+    <meta
+      name="description"
+      content="This is a simple demonstration of ML deployment"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+
+    <title>Loan Approval Model using Logistic Regression</title>
+  </head>
+
+  <body style="background-color: rgb(0, 0, 0)">
+    <section class="hero" align="center">
+      <h1
+        style="
+          background-color: rgb(0, 0, 0);
+          color: white;
+          padding: 0rem;
+          margin: 6rem;
+          font-size: 2.4rem;
+          font-family: Arial;
+        "
+      >
+        Loan Approval Model
+      </h1>
+      <h2
+        style="
+          background-color: rgb(0, 0, 0);
+          color: white;
+          padding: 0rem;
+          margin: 2rem;
+          font-size: 1.5rem;
+          font-family: cursive;
+        "
+      >
+        This model is based on Logistic Regression
+      </h2>
+      <h3
+        style="
+          background-color: rgb(0, 0, 0);
+          color: white;
+          padding: 0rem;
+          margin: 2rem;
+          font-size: 1rem;
+          font-family: cursive;
+        "
+      >
+        Enter Applicant Details:
+      </h3>
+      <form
+        action="{{ url_for('predict')}}"
+        method="post"
+        class="form"
+        style="
+          background-color: rgb(212, 212, 212);
+          color: rgb(0, 0, 0);
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          padding: 0rem;
+          margin: 4rem;
+          font-size: 1rem;
+          font-family: Arial, Helvetica, sans-serif;
+        "
+      >
+        <div style="margin: 0.3rem">
+          <label for="Gender">Gender:</label>
+          <select name="Gender_ddn" id="Gender">
+            <option value="Male">Male</option>
+	    <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div style="margin: 0.3rem">
+          <label for="Married">Married:</label>
+          <select name="Married_ddn" id="Married">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div style="margin: 0.3rem">
+          <label for="Dependents">Dependents:</label>
+          <select name="Dependents_ddn" id="Dependents">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+          </select>
+        </div>
+          <div style="margin: 0.3rem">
+          <label for="Education">Education:</label>
+          <select name="Education_ddn" id="Education">
+            <option value="Graduate">Graduate</option>
+            <option value="Not Graduate">Not Graduate</option>
+          </select>
+        <button
+          type="submit"
+          class="btn"
+          style="
+            margin: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            background: rgb(72, 137, 223);
+            border: none;
+            font-size: 1rem;
+            color: white;
+            border-radius: 1rem;
+            cursor: pointer;
+          "
+        >
+          Predict Salary
+        </button>
+      </form>
+    </section>
+    <h3
+      style="
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0rem;
+        margin: 4rem;
+        font-size: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+      "
+    >
+      {{ prediction_text }}
+    </h3>
+  </body>
+</html>
