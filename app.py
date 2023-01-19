@@ -1,27 +1,43 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template
-import pickle
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
 
-app = Flask(__name__)
-model = pickle.load(open('build_pipeline.pkl', 'rb'))
+<body>
+ <div class="login">
+	<h1>Predict Loan Approval Status</h1>
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Loan_ID" placeholder="Loan_ID" required="required" /><br>
+      <input type="text" name="Gender" placeholder="Gender" required="required" /><br>
+      <input type="text" name="Married" placeholder="Married" required="required" /><br>
+      <input type="text" name="Dependents" placeholder="Dependents" required="required" /><br>
+      <input type="text" name="Education" placeholder="Education" required="required" /><br>
+      <input type="text" name="Self_Employed" placeholder="Self_Employed" required="required" /><br>
+      <input type="number" name="ApplicantIncome" placeholder="ApplicantIncome" required="required" /><br>
+      <input type="number" name="CoapplicantIncome" placeholder="CoapplicantIncome" required="required" /><br>
+      <input type="number" name="LoanAmount" placeholder="LoanAmount" required="required" /><br>
+      <input type="number" name="Loan_Amount_Term" placeholder="Loan_Amount_Term" required="required" /><br>
+      <input type="number" name="Credit_History" placeholder="Credit_History" required="required" /><br>
+      <input type="text" name="Property_Area" placeholder="Property_Area" required="required" /><br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
 
-@app.route('/predict',methods=['POST'])
-def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    int_features = [x for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
+   <br>
+   <br>
+   {{ prediction_text }}
 
-    output = str(prediction)
-
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
+ </div>
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+</body>
+</html>
