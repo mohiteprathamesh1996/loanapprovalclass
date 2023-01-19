@@ -3,3 +3,4 @@ seaborn>=0.12.2
 xgboost>=1.7.3
 Flask>=2.2.2
 sklearn
+gunicorn 
