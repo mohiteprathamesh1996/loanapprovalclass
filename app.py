@@ -16,13 +16,13 @@ def predict():
     For rendering results on HTML GUI
     '''
     int_features = [x for x in request.form.values()]
-    prediction = model.predict(
-	    pd.DataFrame(int_features, columns=['Loan_ID', 'Gender', 'Married', 'Dependents', 'Education',
-       'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount',
-       'Loan_Amount_Term', 'Credit_History', 'Property_Area'])
-    )
+    # prediction = model.predict(
+	  #   pd.DataFrame(int_features, columns=['Loan_ID', 'Gender', 'Married', 'Dependents', 'Education',
+    #    'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount',
+    #    'Loan_Amount_Term', 'Credit_History', 'Property_Area'])
+    # )
 
-    output = prediction[0]
+    output = int_features
 
     return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
 
