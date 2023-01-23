@@ -20,7 +20,7 @@ def predict():
     rescap = pd.DataFrame(
       int_features,
       index=[
-        'Loan_ID', 'Gender', 'Married', 'Dependents', 'Education',
+        'Gender', 'Married', 'Dependents', 'Education',
         'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount',
         'Loan_Amount_Term', 'Credit_History', 'Property_Area'
         ]
