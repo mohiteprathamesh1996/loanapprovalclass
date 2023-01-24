@@ -1,6 +1,7 @@
 numpy
 pandas
 seaborn
+matplotlib
 xgboost
 Flask
 scikit-learn
